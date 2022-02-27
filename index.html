@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="display">
+            <input id="output" type="text" placeholder="0">
+        </div>
+        <div class="buttons">
+            <div class="row">
+                <button id="ce" onclick="backspace()">CE</button>
+                <button onclick="fact()">X!</button>
+                <button class="btn">(</button>
+                <button class="btn">)</button>
+                <button class="btn">%</button>
+                <button id="ac" onclick="outputval.value = ''">AC</button>
+            </div>
+            <div class="row">
+                <button onclick="sin()">sin</button>
+                <button onclick="pi()">π</button>
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn">/</button>
+            </div>
+            <div class="row">
+                <button onclick="cos()">cos</button>
+                <button onclick="log()">log</button>
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn">*</button>
+            </div>
+            <div class="row">
+                <button onclick="tan()">tan</button>
+                <button onclick="sqrt()">√</button>
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn">-</button>
+            </div>
+            <div class="row">
+                <button onclick="e()">e</button>
+                <button onclick="pow()">x<spna style="position: relative;
+                     bottom: .4rem;
+                      right: .3px; font-size:12px;">2
+                    </spna></button>
+                <button class="btn">0</button>
+                <button class="btn">.</button>
+                <button class="btn">+</button>
+                <button id="eval" onclick="outputval.value=eval(outputval.value)">=</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    var outputval = document.querySelector('#output')
+    var btn = document.querySelectorAll('.btn')
+    for (obj of btn) {
+        obj.addEventListener('click', (e) => {
+
+            btnval = e.target.innerText;
+
+            outputval.value += btnval;
+
+        })
+    }
+    function sin() {
+        outputval.value = Math.sin(outputval.value)
+    }
+    function cos() {
+        outputval.value = Math.cos(outputval.value)
+    }
+    function tan() {
+        outputval.value = Math.tan(outputval.value)
+    }
+    function pow() {
+        outputval.value = Math.pow(outputval.value, 2)
+    }
+    function sqrt() {
+        outputval.value = Math.sqrt(outputval.value, 2)
+    }
+    function log() {
+        outputval.value = Math.log(outputval.value)
+    }
+    function pi() {
+        outputval.value = 3.1419226;
+    }
+    function e() {
+        outputval.value = 2.7182828;
+    }
+    function fact() {
+        var i, num, f;
+        f = 1;
+        num = outputval.value;
+        for (i = 1; i < num; i++) {
+            f = f * i;
+        }
+        i = i - 1
+        outputval.value = f;
+    }
+    function backspace() {
+        outputval.value = outputval.value.substr(0, outputval.value.length - 1)
+    }
+
+
+</script>
+
+</html>
